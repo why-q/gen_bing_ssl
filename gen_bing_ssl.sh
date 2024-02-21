@@ -1,5 +1,9 @@
 #!/bin/bash
 
+folder_path="/etc/bing"
+if [ ! -d $folder_path ]; then
+    mkdir $folder_path
+fi
 cert_path="/etc/bing/cert.crt"
 key_path="/etc/bing/private.key"
 openssl ecparam -genkey -name prime256v1 -out $key_path
