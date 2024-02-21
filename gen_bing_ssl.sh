@@ -1,12 +1,6 @@
 #!/bin/bash
 
-folder_path="/etc/bing"
-if [ ! -d $folder_path ]; then
-    mkdir $folder_path
-fi
-cert_path="/etc/bing/cert.crt"
-key_path="/etc/bing/private.key"
-openssl ecparam -genkey -name prime256v1 -out $key_path
-openssl req -new -x509 -days 36500 -key $key_path -out $cert_path -subj "/CN=www.bing.com"
+openssl ecparam -genkey -name prime256v1 -out /etc/bing/private.key
+openssl req -new -x509 -days 36500 -key /etc/bing/private.key -out /etc/hysteria/cert.crt -subj "/CN=www.bing.com"
 chmod 777 $cert_path
 chmod 777 $key_path
